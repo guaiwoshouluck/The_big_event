@@ -33,7 +33,7 @@
                 <!-- 密码 -->
                 <div class="layui-form-item">
                     <i class="layui-icon layui-icon-password"></i>
-                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <input type="password" name="password" required lay-verify="required|pwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
                 </div>
                 <!-- 登录按钮 -->
                 <div class="layui-form-item">
@@ -75,12 +75,12 @@
             </form>
         </div>
     </div>
+    <!-- 导入Layui的js文件 -->
+    <script src="/assets/lib/layui/layui.all.js"></script>
     <!-- 导入jQuery -->
     <script src="/assets/lib/jquery.js"></script>
     <!-- 导入登录页的JavaScript脚本 -->
     <script src="/assets/js/login.js"></script>
-    <!-- 导入Layui的js文件 -->
-    <script src="/assets/lib/layui/layui.all.js"></script>
 </body>
 
 </html>
