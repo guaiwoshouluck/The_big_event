@@ -13,6 +13,7 @@ $(function() {
 
     //从Layui中获取form对象
     var form = layui.form
+    var layer = layui.layer
         //通过form.verify()函数自定义校验规则
     form.verify({
         //自定义 pwd 的校验规则
@@ -32,15 +33,20 @@ $(function() {
 
     //监听注册表单的提交事件
     $('#form_reg').on('submit', function(e) {
+        //阻止默认提交行为
         e.preventDefault()
-        $.post('http://www.liulongbin.top:3007/api/reguser', {
+            // 发起Ajax的post请求
+        var data = {
             username: $('#form_reg [name=username]').val(),
             password: $('#form_reg [name=password]').val()
-        }, function(res) {
+        }
+        $.post('http://www.liulongbin.top:3007/api/reguser', data, function(res) {
             if (res.status !== 0) {
-                return console.log(res.message)
+                return layer.msg(res.message)
             }
-            console.log('注册成功！')
+            layer.msg('注册成功')
+                //模拟点击行为，用户注册成功后自动跳转到登陆页面
+            $('#link_login').click()
         })
     })
 })
