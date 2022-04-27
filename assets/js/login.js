@@ -49,4 +49,26 @@ $(function() {
             $('#link_login').click()
         })
     })
+
+    //监听登录表单的提交事件
+    $('#form_login').submit(function(e) {
+        //阻止默认提交行为
+        e.preventDefault()
+        $.ajax({
+            url: 'http://www.liulongbin.top:3007/api/login',
+            method: 'POST',
+            //快速获取表单中的数据
+            data: $(this).serialize(),
+            success: function(res) {
+                if (res.status !== 0) {
+                    return layer.msg('登陆失败！')
+                }
+                layer.msg('登陆成功！')
+                    //将token保存到localStorage中
+                localStorage.setItem('token', res.token)
+                    //跳转至后台主页
+                location.href = '/index.html'
+            }
+        })
+    })
 })
